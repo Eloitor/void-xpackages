@@ -90,8 +90,9 @@ jobs:
       - name: Sign repository
         run: |
           echo "${{ secrets.SIGNING_RSA_KEY }}" > private.pem
-          xbps-rindex --privkey private.pem --sign --signedby "Eloi Torrents <eloitor@disroot.org>" $HOME/hostdir/binpkgs
-          xbps-rindex --privkey private.pem --sign-pkg $HOME/hostdir/binpkgs/*.xbps
+          # xbps-rindex --privkey private.pem --sign --signedby "Eloi Torrents <eloitor@disroot.org>" $HOME/hostdir/binpkgs
+          # xbps-rindex --privkey private.pem --sign-pkg $HOME/hostdir/binpkgs/*.xbps
+          xbps-rindex $HOME/hostdir/binpkgs/*.xbps
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
